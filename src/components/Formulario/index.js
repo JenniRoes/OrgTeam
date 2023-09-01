@@ -3,7 +3,7 @@ import CampoTexto from '../CampoTexto';
 import ListaOpciones from '../ListaOpciones';
 import Boton from '../Boton';
 
-const Form = () => {
+const Formulario = () => {
 
     //la página no se recarga y se aplica el Single Page Application
     const singlePage = (evento) => {
@@ -13,13 +13,13 @@ const Form = () => {
     return <section className='formulario'>
         <form onSubmit={singlePage}>
             <h2>Rellena el formulario para crear el colaborador.</h2>
-            <CampoTexto titulo= "Nombre" placeholder="Ingresar nombre"/>
-            <CampoTexto titulo= "Puesto" placeholder="Ingresar puesto"/>
-            <CampoTexto titulo= "Foto" placeholder="Ingresar enlace de foto"/>
+            <CampoTexto titulo= "Nombre" placeholder="Ingresar nombre" required/>
+            <CampoTexto titulo= "Puesto" placeholder="Ingresar puesto" required/>
+            <CampoTexto titulo= "Foto" placeholder="Ingresar enlace de foto" required/>
             <ListaOpciones />
             <Boton texto="Crear" />
         </form>
     </section>
 }
 
-export default Form;
+export default Formulario;
