@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './AgregarOrg.css';
 
 const AgregarOrg = (props) => {

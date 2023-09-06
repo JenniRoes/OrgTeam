@@ -4,6 +4,7 @@ import Encabezado from './components/Encabezado';
 import Formulario from './components/Formulario';
 import AgregarOrg from './components/AgregarOrg';
 import Equipo from './components/Equipo';
+import PiePagina from './components/PiePagina';
 
 function App() {
   //switch para mostrar/ocultar formulario
@@ -14,7 +15,15 @@ function App() {
   }
 
   //mostrar colaboradores y agregar al arreglo 
-  const [colaboradores, setColaboradores] = useState([]);
+  const [colaboradores, setColaboradores] = useState([
+    //dato default
+    {
+      equipo: "Front End",
+      foto: "https://avatars.githubusercontent.com/u/71533815?v=4",
+      nombre: "Jennifer Rodríguez Estrada",
+      puesto: "Desarrolladora"
+    }
+  ]);
 
   //Lista equipos para el componente Equipo
   const equipos = [
@@ -57,7 +66,7 @@ function App() {
 
   //registrar colaborador
   const registrarColaborador = (colaborador) => {
-    console.log (colaborador);
+    console.log(colaborador);
     setColaboradores([...colaboradores, colaborador]);
   }
 
@@ -69,12 +78,14 @@ function App() {
       {
         mostrarFormulario === true ?
           <Formulario equipos={equipos.map((equipo) => equipo.titulo)}
-          registrarColaborador = {registrarColaborador}/> : <div></div>
+            registrarColaborador={registrarColaborador} /> : <div></div>
       }
 
       <AgregarOrg cambiarMostrar={cambiarMostrar} />
 
-      {equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} />)}
+      {equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} />)}
+
+      <PiePagina />
     </div>
   );
 }
