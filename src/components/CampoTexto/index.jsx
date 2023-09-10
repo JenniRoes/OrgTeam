@@ -6,9 +6,11 @@ const CampoTexto = (props) => {
         props.setValor(evento.target.value);
     }
 
-    return <div className='campo-texto'>
+    const { type = "text" } = props;
+
+    return <div className={`campo campo-${type}`}>
         <label>{props.titulo}</label>
-        <input placeholder={props.placeholder} required={props.required} value={props.valor} onChange={manejarCambio}/>
+        <input placeholder={props.placeholder} required={props.required} value={props.valor} onChange={manejarCambio} type={type} />
     </div>
 }
 

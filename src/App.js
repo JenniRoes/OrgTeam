@@ -123,6 +123,11 @@ function App() {
     setEquipos(equiposActualizados);
   }
 
+  //crear equipo
+  const crearEquipo = (nuevoEquipo) => {
+    setEquipos([...equipos, { ...nuevoEquipo, id: uuid() }]);
+  }
+
   //Single Page Application
   return (
     <div>
@@ -131,7 +136,7 @@ function App() {
       {
         mostrarFormulario === true ?
           <Formulario equipos={equipos.map((equipo) => equipo.titulo)}
-            registrarColaborador={registrarColaborador} /> : <div></div>
+            registrarColaborador={registrarColaborador} crearEquipo={crearEquipo} /> : <div></div>
       }
 
       <AgregarOrg cambiarMostrar={cambiarMostrar} />
