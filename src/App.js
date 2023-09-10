@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuid } from "uuid";
 import './App.css';
 import Encabezado from './components/Encabezado';
 import Formulario from './components/Formulario';
@@ -15,15 +16,41 @@ function App() {
   }
 
   //mostrar colaboradores y agregar al arreglo 
-  const [colaboradores, setColaboradores] = useState([
-    //dato default
-    {
-      equipo: "Front End",
-      foto: "https://avatars.githubusercontent.com/u/71533815?v=4",
-      nombre: "Jennifer Rodríguez Estrada",
-      puesto: "Desarrolladora"
-    }
-  ]);
+  const [colaboradores, setColaboradores] = useState([{
+    id: uuid(),
+    equipo: "Front End",
+    foto: "https://github.com/harlandlohora.png",
+    nombre: "Harland Lohora",
+    puesto: "Instructor"
+  },
+  {
+    id: uuid(),
+    equipo: "Programación",
+    foto: "https://github.com/genesysR-dev.png",
+    nombre: "Genesys Rondón",
+    puesto: "Desarrolladora de software e instructora"
+  },
+  {
+    id: uuid(),
+    equipo: "UX y Diseño",
+    foto: "https://github.com/JeanmarieAluraLatam.png",
+    nombre: "Jeanmarie Quijada",
+    puesto: "Instructora en Alura Latam"
+  },
+  {
+    id: uuid(),
+    equipo: "Programación",
+    foto: "https://github.com/christianpva.png",
+    nombre: "Christian Velasco",
+    puesto: "Head de Alura e Instructor"
+  },
+  {
+    id: uuid(),
+    equipo: "Innovación y Gestión",
+    foto: "https://github.com/JoseDarioGonzalezCha.png",
+    nombre: "Jose Gonzalez",
+    puesto: "Dev FullStack"
+  }]);
 
   //Lista equipos para el componente Equipo
   const equipos = [
@@ -70,6 +97,11 @@ function App() {
     setColaboradores([...colaboradores, colaborador]);
   }
 
+  //Eliminar colaborador
+  const eliminarColaborador = () => {
+      
+  }
+
   //Single Page Application
   return (
     <div>
@@ -83,7 +115,9 @@ function App() {
 
       <AgregarOrg cambiarMostrar={cambiarMostrar} />
 
-      {equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} />)}
+      {
+        equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} eliminarColaborador={eliminarColaborador} />)
+      }
 
       <PiePagina />
     </div>
