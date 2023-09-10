@@ -53,43 +53,50 @@ function App() {
   }]);
 
   //Lista equipos para el componente Equipo
-  const equipos = [
+  const [equipos, setEquipos] = useState([
     {
+      id: uuid(),
       titulo: "Programación",
       fondo: "#D9F7E9",
       destaque: "#57C278"
     },
     {
+      id: uuid(),
       titulo: "Front End",
       fondo: "#E8F8FF",
       destaque: "#82CFFA"
     },
     {
+      id: uuid(),
       titulo: "Data Science",
       fondo: "#F0F8E2",
       destaque: "#A6D157"
     },
     {
+      id: uuid(),
       titulo: "Devops",
       fondo: "#FDE7E8",
       destaque: "#E06B69"
     },
     {
+      id: uuid(),
       titulo: "UX y Diseño",
       fondo: "#FAE9F5",
       destaque: "#DB6EBF"
     },
     {
+      id: uuid(),
       titulo: "Móvil",
       fondo: "#FFF5D9",
       destaque: "#FFBA05"
     },
     {
+      id: uuid(),
       titulo: "Innovación y Gestión",
       fondo: "#FFEEDF",
       destaque: "#FF8A29"
     }
-  ]
+  ])
 
   //registrar colaborador
   const registrarColaborador = (colaborador) => {
@@ -98,8 +105,22 @@ function App() {
   }
 
   //Eliminar colaborador
-  const eliminarColaborador = () => {
-      
+  const eliminarColaborador = (id) => {
+    const nuevosColaboradores = colaboradores.filter((colaborador) => colaborador.id !== id);
+    setColaboradores(nuevosColaboradores);
+  }
+
+  //Actuallizar color equipo
+  const actualizarColor = (color, id) => {
+    const equiposActualizados = equipos.map((equipo) => {
+      if (equipo.id === id) {
+        equipo.destaque = color;
+      }
+
+      return equipo;
+    })
+
+    setEquipos(equiposActualizados);
   }
 
   //Single Page Application
@@ -116,7 +137,7 @@ function App() {
       <AgregarOrg cambiarMostrar={cambiarMostrar} />
 
       {
-        equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} eliminarColaborador={eliminarColaborador} />)
+        equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} eliminarColaborador={eliminarColaborador} actualizarColor={actualizarColor} />)
       }
 
       <PiePagina />

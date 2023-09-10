@@ -5,6 +5,11 @@
     text-align: center; 
 }
 
+.input-color {
+    position: absolute;
+    right: 50px;
+}
+
 .equipo h3 {
     font-size: 32px;  
     font-weight: 400;
