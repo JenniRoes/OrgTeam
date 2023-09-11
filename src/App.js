@@ -9,7 +9,7 @@ import PiePagina from './components/PiePagina';
 
 function App() {
   //switch para mostrar/ocultar formulario
-  const [mostrarFormulario, setMostrar] = useState(true);
+  const [mostrarFormulario, setMostrar] = useState(false);
 
   const cambiarMostrar = () => {
     setMostrar(!mostrarFormulario);
