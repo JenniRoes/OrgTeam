@@ -70,8 +70,7 @@ const Formulario = (props) => {
             )}
           </form>
         </section>
-      );
-      
+      );    
 }
 
 
