@@ -1,9 +1,10 @@
 import './Colaborador.css';
 import { TiDelete } from 'react-icons/ti';
+/*import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';*/
 
 const Colaborador = (props) => {
-    const { nombre, puesto, foto, id } = props.datos;
-    const { color, eliminarColaborador } = props;
+    const { nombre, puesto, foto, id, /*fav*/ } = props.datos;
+    const { color, eliminarColaborador, /*like*/ } = props;
 
     return <div className='colaborador'>
         <TiDelete className='eliminar' onClick={() => eliminarColaborador(id)} />
@@ -13,6 +14,8 @@ const Colaborador = (props) => {
         <div className='informacion'>
             <h4>{nombre}</h4>
             <h5>{puesto}</h5>
+            {/*{fav ? <AiFillHeart color='red' onClick={() => like(id)}/> : <AiOutlineHeart onClick={() => like(id)}/>}*/}
+            
         </div>
     </div>
 }

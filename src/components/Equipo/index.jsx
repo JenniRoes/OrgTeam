@@ -5,7 +5,7 @@ import Colaborador from '../Colaborador';
 const Equipo = (props) => {
 
     const { destaque, titulo, id } = props.datos;
-    const { colaboradores, eliminarColaborador, actualizarColor } = props;
+    const { colaboradores, eliminarColaborador, actualizarColor, /*like*/ } = props;
 
 
     return <>
@@ -15,7 +15,7 @@ const Equipo = (props) => {
                 <h3 style={{ borderColor: destaque }}>{titulo}</h3>
                 <div className='colaboradores'>
                     {
-                        colaboradores.map((colaborador, index) => <Colaborador datos={colaborador} key={index} color={destaque} eliminarColaborador={eliminarColaborador} />)
+                        colaboradores.map((colaborador, index) => <Colaborador datos={colaborador} key={index} color={destaque} eliminarColaborador={eliminarColaborador} /*like={like}*//>)
                     }
                 </div>
             </section>

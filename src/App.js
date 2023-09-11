@@ -9,7 +9,7 @@ import PiePagina from './components/PiePagina';
 
 function App() {
   //switch para mostrar/ocultar formulario
-  const [mostrarFormulario, setMostrar] = useState(false);
+  const [mostrarFormulario, setMostrar] = useState(true);
 
   const cambiarMostrar = () => {
     setMostrar(!mostrarFormulario);
@@ -22,6 +22,7 @@ function App() {
     foto: "https://github.com/harlandlohora.png",
     nombre: "Harland Lohora",
     puesto: "Instructor"
+    //fav: true
   },
   {
     id: uuid(),
@@ -29,6 +30,7 @@ function App() {
     foto: "https://github.com/genesysR-dev.png",
     nombre: "Genesys Rondón",
     puesto: "Desarrolladora de software e instructora"
+    //fav: false
   },
   {
     id: uuid(),
@@ -36,6 +38,7 @@ function App() {
     foto: "https://github.com/JeanmarieAluraLatam.png",
     nombre: "Jeanmarie Quijada",
     puesto: "Instructora en Alura Latam"
+    //fav: true
   },
   {
     id: uuid(),
@@ -43,6 +46,7 @@ function App() {
     foto: "https://github.com/christianpva.png",
     nombre: "Christian Velasco",
     puesto: "Head de Alura e Instructor"
+    //fav: false
   },
   {
     id: uuid(),
@@ -50,6 +54,7 @@ function App() {
     foto: "https://github.com/JoseDarioGonzalezCha.png",
     nombre: "Jose Gonzalez",
     puesto: "Dev FullStack"
+    //fav: false
   }]);
 
   //Lista equipos para el componente Equipo
@@ -128,6 +133,18 @@ function App() {
     setEquipos([...equipos, { ...nuevoEquipo, id: uuid() }]);
   }
 
+  //Like a colaborador
+ /* const like = (id) => {
+    const setLike = colaboradores.map((colaborador) => {
+      if (colaborador.id === id) {
+        colaborador.fav = !colaborador.fav;
+      }
+      return colaborador;
+    })
+
+    setColaboradores(setLike);
+  } */
+
   //Single Page Application
   return (
     <div>
@@ -136,13 +153,13 @@ function App() {
       {
         mostrarFormulario === true ?
           <Formulario equipos={equipos.map((equipo) => equipo.titulo)}
-            registrarColaborador={registrarColaborador} crearEquipo={crearEquipo} /> : <div></div>
+            registrarColaborador={registrarColaborador} crearEquipo={crearEquipo} cambiarMostrar={cambiarMostrar}/> : <div></div>
       }
 
       <AgregarOrg cambiarMostrar={cambiarMostrar} />
 
       {
-        equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} eliminarColaborador={eliminarColaborador} actualizarColor={actualizarColor} />)
+        equipos.map((equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} eliminarColaborador={eliminarColaborador} actualizarColor={actualizarColor} /*like={like}*//>)
       }
 
       <PiePagina />
