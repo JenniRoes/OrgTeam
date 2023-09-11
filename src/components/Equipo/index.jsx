@@ -1,4 +1,4 @@
-import hexToRgba from '../../..node_modules/hex-to-rg';
+import hexToRgba from '../../..node_modules/hex-to-rgb';
 import './Equipo.css';
 import Colaborador from '../Colaborador';
 
